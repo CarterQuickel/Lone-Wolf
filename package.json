@@ -1,0 +1,20 @@
+{
+  "name": "js-ejs-skeleton",
+  "version": "1.0.0",
+  "description": "Default JavaScript + EJS app skeleton",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js"
+  },
+  "keywords": [
+    "ejs",
+    "express",
+    "node"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "ejs": "^3.1.10",
+    "express": "^4.21.2"
+  }
+}
