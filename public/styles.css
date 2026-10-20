@@ -52,3 +52,7 @@ a {
 a:hover {
   scale: 1.1;
 }
+
+a:visited {
+  background-color: #2563eb;
+}
