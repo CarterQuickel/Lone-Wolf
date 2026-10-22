@@ -1,18 +1,26 @@
 const express = require('express');
 const path = require('path');
 const fs = require('fs');
+const cheerio = require('cheerio');
 
 // get all paths
 const choicesPath = './Paths';
-const pathJSON = [];
+const connectors = {};
 fs.readdir(choicesPath, (err, f) => {
   if (err) throw err;
   const files = f.filter(fil => path.extname(fil) === '.htm');
   files.forEach(fil => {
     const filePath = path.join(choicesPath, fil);
     const content = fs.readFileSync(filePath, 'utf8');
-    pathJSON.push(fil);
+    const $ = cheerio.load(content);
+    const hrefs = $('a[href]').map((i, e) => $(e).attr('href')).get();
+    const sectMatches = hrefs.filter(a => a.match(/sect/i));
+    const match = fil.match(/sect\s*(\d+)/i);
+    if (match) {
+      connectors[match[1]] = sectMatches;
+    }
   });
+  console.log(connectors);
 });
 
 // startup data
@@ -30,7 +38,7 @@ app.get('/', (req, res) => {
   res.render('index', {
     title: 'Choose a Path',
     message: 'Testing!',
-    list: pathJSON
+    list: connectors
   });
 });
 

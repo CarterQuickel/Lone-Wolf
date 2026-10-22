@@ -10,22 +10,21 @@
     <main class="container">
       <h1><%= title %></h1>
       <p><%= message %></p>
-      <div class="pathsList">
-        <% 
-          list.sort((a, b) => {
-            const matchA = a.match(/^([a-zA-Z]+)(\d+)/);
-            const matchB = b.match(/^([a-zA-Z]+)(\d+)/);
-            if (!matchA) return 1;
-            if (!matchB) return -1;
-            return parseInt(matchA[2], 10) - parseInt(matchB[2], 10);
-          });
-          list.forEach((page, index) => { 
-          const match = page.match(/^([a-zA-Z]+)(\d+)/); %>
-          <% if (match && match[1] === 'sect') { %>
-            <a href="/Paths/<%= page %>"><%= match[2] %></a>
+      <div class="pathsList" id="pathsTree">
+          <% for (const sect in list) { %>
+            <% let fList = list[sect].map(i => i.match(/\d+/)?.[0]).filter(Boolean); %>
+            <% fList = (fList != "" || sect == '350' ? fList : "FAIL") %>
+            <a href="/Paths/sect<%= sect %>.htm" style="--color: <%= fList === "FAIL" ? 'rgb(216, 14, 14)' : '#111827' %>">
+              <h3><%= sect %></h3>
+              <div class="visit">VISITED</div>
+              <%- Array.isArray(fList) ? fList.join("<br>") : fList %>
+            </a>
           <% } %>
-        <% }); %>
       </div>
     </main>
+    <script>
+          const graphData = <%- JSON.stringify(list).replace(/</g, '\\u003c') %>;
+    </script>
+    <script src="/tree.js"></script>
   </body>
 </html>

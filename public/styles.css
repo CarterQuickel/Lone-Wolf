@@ -3,10 +3,11 @@ body {
   font-family: Arial, sans-serif;
   background: #f4f7fb;
   color: #1f2937;
+  overflow-x: auto;
 }
 
 .container {
-  max-width: 1200px;
+  min-width: 500vw;
   margin: 80px auto;
   padding: 32px;
   background: #ffffff;
@@ -36,23 +37,34 @@ button:hover {
 
 .pathsList {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(50px, 3fr));
+  grid-template-columns: repeat(auto-fit, minmax(250px, 3fr));
   gap: 10px;
 }
 
 a {
+  min-width: 200px;
   text-decoration: none;
-  background-color: #111827;
+  background-color: var(--color);
   color: white;
   border-radius: 40px;
+  border: none;
   padding: 10px;
   transition: all 0.1s ease;
+  position: relative;
+}
+
+a .visit {
+  opacity: 0;
+  color: green;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+a:visited .visit {
+  opacity: 1;
 }
 
 a:hover {
-  scale: 1.1;
-}
-
-a:visited {
-  background-color: #2563eb;
+  scale: 1.05;
 }
