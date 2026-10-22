@@ -1,19 +1,7 @@
 body {
-  margin: 0;
   font-family: Arial, sans-serif;
   background: #f4f7fb;
   color: #1f2937;
-  overflow-x: auto;
-}
-
-.container {
-  min-width: 500vw;
-  margin: 80px auto;
-  padding: 32px;
-  background: #ffffff;
-  border-radius: 12px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-  text-align: center;
 }
 
 h1 {
@@ -35,38 +23,84 @@ button:hover {
   background: #1d4ed8;
 }
 
-.pathsList {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 3fr));
-  gap: 10px;
-}
-
 a {
   min-width: 200px;
   text-decoration: none;
   background-color: var(--color);
   color: white;
-  border-radius: 40px;
+  border-radius: 30px;
   border: none;
   padding: 10px;
   transition: all 0.1s ease;
   position: relative;
 }
 
-a:not(:visited) .visit {
-  color: red;
-  position: absolute;
-  top: 10px;
-  right: 20px;
-  font-weight: bold;
-  font-size: 30px;
-}
-
-a:visited .visit {
-  opacity: 1;
-  color: green;
-}
-
 a:hover {
   scale: 1.05;
+}
+
+.container {
+    width: max-content;
+    min-width: 500px;
+    margin: 30px auto;
+    padding: 32px;
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    text-align: center;
+}
+
+.pathsList {
+    position: relative;
+    min-width: 500px;
+    min-height: 400px;
+    margin: 0 auto;
+}
+
+.treeNode {
+    position: absolute;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #111827;
+    color: white;
+    border: 1px solid #8370A1;
+    border-radius: 12px;
+    padding: 10px;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: bold;
+    z-index: 1;
+    transition: background 0.15s ease, transform 0.15s ease;
+}
+
+.treeNode:hover {
+    background: #8370A1;
+    transform: scale(1.05);
+}
+
+.treeNode:visited {
+  background-color: rgb(65, 143, 95) !important;
+  border: 1px solid #0b5c04 !important;
+}
+
+.treeNode:visited:hover {
+    background: #337426 !important;
+    transform: scale(1.05) !important;
+}
+
+.pathsList svg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    overflow: visible;
+    pointer-events: none;
+}
+
+.createNew {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  margin: 20px;
 }

@@ -8,20 +8,9 @@
   </head>
   <body>
     <main class="container">
-      <h1><%= title %></h1>
-      <p><%= message %></p>
-      <div class="pathsList" id="pathsTree">
-          <% for (const sect in list) { %>
-            <% let fList = list[sect].map(i => i.match(/\d+/)?.[0]).filter(Boolean); %>
-            <% fList = (fList != "" || sect == '350' ? fList : "FAIL") %>
-            <a href="/Paths/sect<%= sect %>.htm" style="--color: <%= fList === "FAIL" ? 'rgb(216, 14, 14)' : '#111827' %>">
-              <h3><%= sect %></h3>
-              <div class="visit">✓</div>
-              <%- Array.isArray(fList) ? fList.join("<br>") : fList %>
-            </a>
-          <% } %>
-      </div>
+      <div class="pathsList" id="pathsTree"></div>
     </main>
+    <button class="createNew" id="createNew">+ Create Story</button>
     <script>
           const graphData = <%- JSON.stringify(list).replace(/</g, '\\u003c') %>;
     </script>
