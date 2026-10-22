@@ -16,7 +16,7 @@
             <% fList = (fList != "" || sect == '350' ? fList : "FAIL") %>
             <a href="/Paths/sect<%= sect %>.htm" style="--color: <%= fList === "FAIL" ? 'rgb(216, 14, 14)' : '#111827' %>">
               <h3><%= sect %></h3>
-              <div class="visit">VISITED</div>
+              <div class="visit">✓</div>
               <%- Array.isArray(fList) ? fList.join("<br>") : fList %>
             </a>
           <% } %>
