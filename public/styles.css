@@ -13,10 +13,12 @@ button {
   background: #2563eb;
   color: white;
   border: none;
-  padding: 12px 20px;
+  padding: 15px 24px;
   border-radius: 8px;
   cursor: pointer;
   font-size: 1rem;
+  font-size: 20px;
+  z-index: 100;
 }
 
 button:hover {
